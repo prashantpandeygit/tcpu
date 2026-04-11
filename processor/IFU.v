@@ -1,7 +1,7 @@
 // IFU has clock and reset pins as input and 32 bit instruction code as output
 // the internal block has inst. memory, program counter and adder to increment counter by 4 on positive clock edge.
 
-`include "INST_MEM.v"
+`include "instmem.v"
 
 module IFU(
     input clock,reset,

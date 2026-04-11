@@ -1,5 +1,5 @@
-`include "./../register/REG_FILE.v"
-`include "./../arithmetic logic unit/ALU.v"
+`include "reg.v"
+`include "ALU.v"
 
 module DATAPATH(
     input [4:0]read_reg_num1,
@@ -19,18 +19,24 @@ module DATAPATH(
 
     // start the register file
     REG_FILE reg_file_module(
-    read_reg_num1,
-    read_reg_num2,
-    write_reg,
-    write_data,
-    read_data1,
-    read_data2,
-    regwrite,
-    clock,
-    reset
+        .read_reg_num1(read_reg_num1),
+        .read_reg_num2(read_reg_num2),
+        .write_reg(write_reg),
+        .write_data(write_data),
+        .read_data1(read_data1),
+        .read_data2(read_data2),
+        .regwrite(regwrite),
+        .clock(clock),
+        .reset(reset)
     );
 
     // start the ALU
-    ALU alu_module(read_data1, read_data2, alu_control, write_data, zero_flag);
+    ALU alu_module(
+        .in1(read_data1),
+        .in2(read_data2),
+        .alu_control(alu_control),
+        .alu_result(write_data),
+        .zero_flag(zero_flag)
+    );
 	 
 endmodule

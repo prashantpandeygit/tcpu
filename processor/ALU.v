@@ -40,7 +40,7 @@ module ALU (
         4'b0101: alu_result = in1>>in2;
         4'b0110: alu_result = in1*in2;
         4'b0111: alu_result = in1^in2;
-
+        default: alu_result = 32'b0;
         endcase
 
         // zero flag if alu result is zero
